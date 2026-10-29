@@ -1,6 +1,85 @@
-# Untitled
 
-A Pen created on CodePen.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Bot Panel</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background: #161b22;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h2 { margin-bottom: 20px; color: #58a6ff; }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover { background: #2ea043; }
+        #bot-panel { display: none; margin-top: 15px; }
+    </style>
+</head>
+<body>
 
-Original URL: [https://codepen.io/editor/MENTAL-BOY/pen/01a188a6-386a-7d52-b3ef-0d8fbddc60d4](https://codepen.io/editor/MENTAL-BOY/pen/01a188a6-386a-7d52-b3ef-0d8fbddc60d4).
+    <div class="container" id="login-box">
+        <h2>Trading Bot Login</h2>
+        <input type="text" id="licenseKey" placeholder="Enter License Key (GENZ-2026)">
+        <button onclick="verifyLicense()">Connect Bot</button>
+    </div>
 
+    <div class="container" id="bot-panel">
+        <h2>Bot Active</h2>
+        <p>Status: <span style="color: #238636; font-weight: bold;">Running Successfully</span></p>
+        <p>License Key: <b>GENZ-2026</b></p>
+        <button style="background: #da3633;" onclick="location.reload()">Disconnect</button>
+    </div>
+
+    <script>
+        function verifyLicense() {
+            const key = document.getElementById('licenseKey').value.trim();
+            if (key === "GENZ-2026") {
+                document.getElementById('login-box').style.display = 'none';
+                document.getElementById('bot-panel').style.display = 'block';
+            } else {
+                alert("Galat License Key hai! Sahi key enter karein: GENZ-2026");
+            }
+        }
+    </script>
+
+</body>
+</html>
