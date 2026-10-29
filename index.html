@@ -31,7 +31,6 @@
         button {
             width: 100%;
             padding: 12px;
-            background: #da3633;
             color: white;
             border: none;
             border-radius: 5px;
@@ -39,17 +38,39 @@
             cursor: pointer;
             margin-top: 15px;
         }
-        button:hover { background: #b62324; }
+        #action-btn { background: #238636; }
+        #action-btn.running { background: #da3633; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h2>Bot Active</h2>
-        <p>Status: <span style="color: #238636; font-weight: bold;">Running Successfully</span></p>
+        <h2>Trading Bot</h2>
+        <p>Status: <span id="status" style="color: #da3633; font-weight: bold;">Stopped</span></p>
         <p>License Key: <b>GENZ-2026</b></p>
-        <button onclick="location.reload()">Restart Bot</button>
+        <button id="action-btn" onclick="toggleBot()">Start Bot</button>
     </div>
+
+    <script>
+        let isRunning = false;
+        function toggleBot() {
+            isRunning = !isRunning;
+            const statusEl = document.getElementById('status');
+            const btnEl = document.getElementById('action-btn');
+            
+            if (isRunning) {
+                statusEl.innerText = "Running Successfully";
+                statusEl.style.color = "#238636";
+                btnEl.innerText = "Stop Bot";
+                btnEl.classList.add('running');
+            } else {
+                statusEl.innerText = "Stopped";
+                statusEl.style.color = "#da3633";
+                btnEl.innerText = "Start Bot";
+                btnEl.classList.remove('running');
+            }
+        }
+    </script>
 
 </body>
 </html>
